@@ -9,6 +9,14 @@ AAuraCharacterBase::AAuraCharacterBase()
  	// 关闭每帧调用Tick
 	PrimaryActorTick.bCanEverTick = false;
 
+	// 创建 武器骨骼
+	Weapon = CreateDefaultSubobject<USkeletalMeshComponent>("Weapon");
+
+	// 添加武器插槽
+	Weapon->SetupAttachment(GetMesh(), FName("WeaponHandSocket"));
+
+	// 关闭碰撞
+	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
 // Called when the game starts or when spawned
